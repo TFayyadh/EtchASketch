@@ -1,8 +1,17 @@
 const brownButton =  document.querySelector('.brown')
+const randomButton =  document.querySelector('.random')
 const blackButton =  document.querySelector('.black')
 const startButton =  document.querySelector('.start')
 const container = document.querySelector('.container')
 const clearGrid = document.querySelector('.clear')
+
+function randomRGB() {
+    var x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+    
+    return {x,y,z}
+  }
 
 const createGrid = (size) => {
 
@@ -10,6 +19,9 @@ const createGrid = (size) => {
     wrapper.classList.add('wrapper')
 
     for(i = 0; i < size; i++){
+
+        const {x, y, z} = randomRGB()
+
         const row = document.createElement("div")
         row.classList.add('grid-row')
 
@@ -46,6 +58,17 @@ const createGrid = (size) => {
                     gridBox.style.backgroundColor = "black"
                 })
                 
+            
+            })
+
+            randomButton.addEventListener('click', () => {
+
+                  
+                  gridBox.addEventListener('mouseenter',() => {
+                    const RGBColor = "rgb(" + x + "," + y + "," + z + ")";
+                    gridBox.style.backgroundColor = RGBColor;
+                })
+                  
             
             })
 
